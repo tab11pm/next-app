@@ -1,7 +1,16 @@
-import type { NextConfig } from "next";
+// next.config.ts
+import type { NextConfig } from 'next'
+import createMDX from '@next/mdx'
+import { mdxOptions } from './lib/mdx-options'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+	basePath: '/ssg',
+	experimental: { mdxRs: true },
+}
 
-export default nextConfig;
+const withMDX = createMDX({
+	extension: /\.(md|mdx)$/,
+	options: mdxOptions,
+})
+
+export default withMDX(nextConfig)

@@ -1,0 +1,12 @@
+src/app/docs
+├── config
+│   └── page.mdx
+├── install
+│   └── page.mdx
+├── layout.tsx
+├── _meta.js
+├── page.mdx
+├── structure
+│   └── page.mdx
+└── theme
+    └── page.mdx

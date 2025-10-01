@@ -1,0 +1,46 @@
+export const dynamic = 'force-static'
+
+# Структура
+
+Задача структуры — чтобы Nextra корректно строила навигацию и всё оставалось статичным.
+
+1. Дерево проекта (минимум)
+
+```
+   src/app/docs
+   ├── config
+   │   └── page.mdx
+   ├── install
+   │   └── page.mdx
+   ├── layout.tsx
+   ├── \_meta.js
+   ├── page.mdx
+   ├── structure
+   │   └── page.mdx
+   └── theme
+   └── page.mdx
+```
+
+2. `\_meta.json` — порядок, заголовки, группы
+
+```json
+{
+	"index": "Обзор",
+	"install": "Установка",
+	"config": "Конфигурация",
+	"theme": "Конфигурация темы",
+	"structure": "Структура",
+	"pages": "Страницы и Компоненты",
+	"meta": "Метаданные и Навигация",
+	"errors": "Ошибки и Чек-лист",
+	"deploy": "Деплой",
+	"theme/": {
+		"type": "menu",
+		"title": "Тема",
+		"items": {
+			"index": "Обзор",
+			"customization": "Кастомизация"
+		}
+	}
+}
+```

@@ -1,0 +1,64 @@
+export const dynamic = 'force-static'
+
+Конфигурация темы
+
+В этой секции настраиваем внешний вид и SEO: логотип, ссылки на репозиторий, футер, шаблон заголовков и Open Graph.
+
+1. theme.config.tsx — базовая тема
+
+```tsx
+import { DocsThemeConfig } from 'nextra-theme-docs'
+import { defaultSeo } from './src/app/config/seo'
+import { Logo } from './src/app/theme/Logo'
+
+const config: DocsThemeConfig = {
+	logo: <Logo />, // свой логотип
+	project: { link: 'https://example.com' },
+	docsRepositoryBase: 'https://github.com/you/repo/tree/main',
+	footer: { text: `© ${new Date().getFullYear()} SSG` },
+	toc: { float: true },
+	editLink: { text: 'Редактировать страницу' },
+	// SEO по умолчанию для всех страниц
+	useNextSeoProps: defaultSeo,
+}
+
+export default config
+```
+
+2. src/app/config/seo.ts — SEO/OG по умолчанию
+
+```tsx
+import type { NextSeoProps } from 'next-seo'
+
+export function defaultSeo(): NextSeoProps {
+	return {
+		titleTemplate: '%s — SSG Docs',
+		description: 'Документация по работе с SSG в Next.js + Nextra',
+		openGraph: {
+			type: 'website',
+			title: 'SG Docs',
+			siteName: 'SSG Docs',
+			images: [
+				{ url: '/og/default.png', width: 1200, height: 630, alt: 'SSG Docs' },
+			],
+		},
+		twitter: { cardType: 'summary_large_image' },
+	}
+}
+```
+
+3. src/app/theme/Logo.tsx — логотип
+
+```tsx
+export function Logo() {
+	return (
+		<div className="flex items-center gap-2 font-semibold">
+			<span
+				className="inline-block h-3 w-3 rounded-full bg-black"
+				aria-hidden
+			/>
+			<span>SSG Docs</span>
+		</div>
+	)
+}
+```

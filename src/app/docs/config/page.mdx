@@ -1,0 +1,97 @@
+export const dynamic = 'force-static'
+
+# Конфигурация
+
+В этом разделе подключаем Nextra, настраиваем тему и фиксируем SSG.
+
+1. next.config.ts — подключение Nextra и MDX-опций
+
+Вынесем MDX-плагины в отдельный файл, чтобы конфиг был чище.
+
+```ts
+import withNextra from 'nextra'
+import { mdxOptions } from './src/app/config/mdxOptions'
+
+const withNextraConfigured = withNextra({
+	theme: 'nextra-theme-docs',
+	themeConfig: './theme.config.tsx',
+	mdxOptions,
+})
+
+export default withNextraConfigured({
+	reactStrictMode: true,
+})
+```
+
+2. `src/app/config/mdxOptions.ts` — логика MDX-плагинов
+
+```ts
+import type { Options } from 'next-mdx-remote/rsc' // тип совместим с mdxOptions
+
+// Подключи свои remark/rehype плагины при необходимости
+// Пример: импортируй и раскомментируй ниже
+// import remarkGfm from 'remark-gfm'
+// import rehypeSlug from 'rehype-slug'
+
+export const mdxOptions: Options['mdxOptions'] = {
+	remarkPlugins: [
+		// remarkGfm
+	],
+	rehypePlugins: [
+		// rehypeSlug
+	],
+}
+```
+
+3. theme.config.tsx — минимум для темы
+
+```ts
+import { DocsThemeConfig } from 'nextra-theme-docs'
+
+const config: DocsThemeConfig = {
+	logo: <span>Nadim Docs</span>,
+	project: { link: 'https://example.com' },
+	footer: { text: `© ${new Date().getFullYear()} Nadim` },
+	useNextSeoProps() {
+		return { titleTemplate: '%s — Nadim Docs' }
+	},
+}
+
+export default config
+```
+
+4. app/layout.tsx — базовый лейаут с картой страниц только для /docs
+
+(Так в навбар/сайдбар не попадут прочие разделы сайта.)
+
+```ts
+import { Layout, Navbar } from 'nextra-theme-docs'
+import { getPageMap } from 'nextra/page-map'
+import 'nextra-theme-docs/style.css'
+
+export const metadata = {}
+
+export default async function RootLayout({
+	children,
+}: {
+	children: React.ReactNode
+}) {
+	const pageMap = await getPageMap('/docs')
+
+	return (
+		<html lang="ru">
+			<body>
+				<Layout navbar={<Navbar logo={<b>Nadim</b>} />} pageMap={pageMap}>
+					{children}
+				</Layout>
+			</body>
+		</html>
+	)
+}
+```
+
+5. Полная статичность
+
+Добавляй в MDX-страницы:
+`export const dynamic = 'force-static'`
+Это гарантирует только SSG: без ISR и без серверной динамики.

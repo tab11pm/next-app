@@ -1,0 +1,11 @@
+export const dynamic = 'force-static' // гарантируем SSG и запрет динамики
+
+# Добро пожаловать!
+
+Эта документация объясняет, как использовать Static Site Generation (`SSG`) в связке **Next.js** + **TypeScript** + **Nextra**.
+
+**SSG** — это стратегия генерации, при которой все страницы рендерятся во время билда и сохраняются как готовые `HTML` + `JSON`. Для контента мы используем `MDX` (Markdown + JSX). Навигация и сайдбар в Nextra формируются автоматически.
+
+import MainDocPage from '@/components/common/MainDocPage'
+
+<MainDocPage />
