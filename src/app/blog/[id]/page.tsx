@@ -1,19 +1,21 @@
 import { notFound } from 'next/navigation'
 import { getPostById } from '@/lib/api/jsonplaceholder'
+import Link from 'next/link'
 
-export const revalidate = 60 // ISR для отдельных постов
+export const revalidate = 60
 
-type Props = { params: { id: string } }
+type Params = { id: string }
+type Props15 = { params: Promise<Params> } // 👈 Next 15
 
-export async function generateMetadata({ params }: Props) {
-	const post = await getPostById(params.id, { next: { revalidate } })
+export async function generateMetadata({ params }: Props15) {
+	const { id } = await params
+	const post = await getPostById(id, { next: { revalidate } })
 	return { title: `Пост #${post.id} — ${post.title}` }
 }
 
-export default async function PostPage({ params }: Props) {
-	const post = await getPostById(params.id, { next: { revalidate } }).catch(
-		() => null
-	)
+export default async function PostPage({ params }: Props15) {
+	const { id } = await params
+	const post = await getPostById(id, { next: { revalidate } }).catch(() => null)
 	if (!post) return notFound()
 
 	return (
@@ -21,9 +23,9 @@ export default async function PostPage({ params }: Props) {
 			<h1 className="text-3xl font-bold mb-2">{post.title}</h1>
 			<p className="text-slate-600">{post.body}</p>
 			<p className="mt-6">
-				<a href="/blog" className="text-brand-600">
+				<Link href="/blog" className="text-brand-600">
 					← Назад к списку
-				</a>
+				</Link>
 			</p>
 		</article>
 	)

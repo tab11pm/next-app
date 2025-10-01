@@ -40,10 +40,10 @@ export async function PUT(req: NextRequest) {
 		)
 
 		return NextResponse.json({ ok: true, key })
-	} catch (e: any) {
-		return NextResponse.json(
-			{ error: e.message ?? 'Upload failed' },
-			{ status: 500 }
-		)
+	} catch (e: unknown) {
+		if (e instanceof Error) {
+			return NextResponse.json({ error: e.message }, { status: 500 })
+		}
+		return NextResponse.json({ error: 'Unknown error' }, { status: 500 })
 	}
 }

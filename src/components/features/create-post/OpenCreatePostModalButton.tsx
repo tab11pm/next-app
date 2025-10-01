@@ -15,13 +15,12 @@ export function OpenCreatePostModalButton() {
 		attachment: FileList
 	}) => {
 		const res = await handleUpload(data)
-		console.log(res.error)
 
 		if (res.data) {
 			push({ title: 'Проверка формы', description: 'UI отправка прошла' })
 			close()
 		} else {
-			push({ title: 'Проверка формы', description: res.error })
+			push({ title: 'Проверка формы', description: 'Ошибка сервера' })
 		}
 	}
 	return (

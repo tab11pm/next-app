@@ -3,7 +3,7 @@ export async function handleUpload(data: {
 	description: string
 	attachment: FileList
 }) {
-	const { title, attachment, description } = data
+	const { title, description } = data
 	const file = data.attachment?.[0]
 	if (!file) throw new Error('Файл не выбран')
 	localStorage.setItem('csr', JSON.stringify({ title, description }))
@@ -39,19 +39,19 @@ export async function handleUpload(data: {
 	}
 
 	// 3) Проверяем, что объект реально появился (HEAD через сервер)
-	// const headRes = await fetch(`/api/s3/head?key=${encodeURIComponent(key)}`)
-	// const headJson = await headRes.json().catch(() => ({}))
-	// console.log('HEAD:', headRes.status, headJson)
+	const headRes = await fetch(`/api/s3/head?key=${encodeURIComponent(key)}`)
+	const headJson = await headRes.json().catch(() => ({}))
+	console.log('HEAD:', headRes.status, headJson)
 
-	// if (!headRes.ok || !headJson?.exists) {
-	// 	throw new Error('Object not found after PUT: ' + JSON.stringify(headJson))
-	// }
+	if (!headRes.ok || !headJson?.exists) {
+		throw new Error('Object not found after PUT: ' + JSON.stringify(headJson))
+	}
 
 	// 4) При необходимости — получить presigned GET для показа
-	// const getUrlRes = await fetch(`/api/s3/url?key=${encodeURIComponent(key)}`)
-	// const { url: getUrl } = await getUrlRes.json()
-	// console.log('GET url:', getUrl)
+	const getUrlRes = await fetch(`/api/s3/url?key=${encodeURIComponent(key)}`)
+	const { url: getUrl } = await getUrlRes.json()
+	console.log('GET url:', getUrl)
 
 	// return { ok: true, key, getUrl }
-	return { ok: true, key }
+	return { data: true, key }
 }

@@ -1,6 +1,5 @@
 import Title from '@/components/ui/Title'
 import { getUsers } from '@/lib/api/jsonplaceholder'
-import LoadingUsers from './loading'
 export const dynamic = 'force-dynamic' // или fetch(..., { cache: 'no-store' })
 
 export const metadata = { title: 'SSR: Пользователи' }
