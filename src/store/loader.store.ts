@@ -1,14 +1,13 @@
 import { create } from 'zustand'
 
 type LoaderState = {
-	isLoader: boolean
-	open: (content: React.ReactNode) => void
+	isOpen: boolean
+	open: () => void
 	close: () => void
 }
 
 export const useLoaderStore = create<LoaderState>((set) => ({
-	isLoader: false,
-	open: () => set({ isLoader: true }),
-	close: () => set({ isLoader: false }),
-	toggle: () => set((state) => ({ isLoader: !state.isLoader })),
+	isOpen: false,
+	open: () => set({ isOpen: true }),
+	close: () => set({ isOpen: false }),
 }))

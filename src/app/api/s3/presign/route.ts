@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
 
 	if (ct.includes('multipart/form-data')) {
 		const form = await req.formData()
-		const f = form.get('attachment')
+		const f = form.get('photo')
 		if (f instanceof File) file = f
 	} else if (ct.includes('application/json')) {
 		const { key, contentType } = await req.json().catch(() => ({}))

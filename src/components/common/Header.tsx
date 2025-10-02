@@ -5,6 +5,7 @@ import { ThemeToggle } from './ThemeToggle'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import Title from '../ui/Title'
+import { PAGES } from '@/constants/PAGES'
 
 export function Header() {
 	return (
@@ -21,10 +22,11 @@ export function Header() {
 					</Link>
 				</Title>
 				<nav className="flex gap-4 text-sm">
-					<Link href="/docs">SSG</Link>
-					<Link href="/blog">ISR</Link>
-					<Link href="/users">SSR</Link>
-					<Link href="/client">CSR</Link>
+					{PAGES.map(({ link, name }) => (
+						<Link key={name} href={link}>
+							{name}
+						</Link>
+					))}
 				</nav>
 				<ThemeToggle />
 			</div>

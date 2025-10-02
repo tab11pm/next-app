@@ -1,0 +1,157 @@
+.main {
+	display: flex;
+	flex-direction: column;
+	gap: 48px;
+	padding: 48px 24px;
+	max-width: 1100px;
+	margin: 0 auto;
+	color: var(--text);
+}
+
+.hero {
+	display: grid;
+	grid-template-columns: 1.2fr 0.8fr;
+	gap: 24px;
+}
+
+@media (max-width: 900px) {
+	.hero {
+		grid-template-columns: 1fr;
+	}
+}
+
+.heroLeft h1 {
+	font-size: 40px;
+	line-height: 1.1;
+	margin: 0 0 12px;
+}
+
+.lead {
+	color: var(--muted);
+	font-size: 16px;
+	margin: 0 0 16px;
+}
+
+.badgesRow {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 16px 0 24px;
+}
+
+.badge {
+	display: inline-block;
+	padding: 6px 10px;
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	font-size: 12px;
+	background: linear-gradient(180deg, #0f1520 0%, #0b1018 100%);
+}
+
+.heroCtas {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.primaryBtn,
+.secondaryBtn,
+.cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 14px;
+	border-radius: 10px;
+	border: 1px solid var(--border);
+	text-decoration: none;
+	color: var(--text);
+}
+
+.primaryBtn {
+	background: var(--accent);
+	border-color: rgba(0, 0, 0, 0);
+}
+.secondaryBtn {
+	background: var(--card);
+}
+
+.heroRight .heroPanel {
+	background: var(--panel);
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	padding: 16px;
+}
+
+.heroPanel h3 {
+	margin: 0 0 8px;
+}
+.heroPanel ul {
+	margin: 0;
+	padding-left: 18px;
+	color: var(--muted);
+}
+.heroPanel li {
+	margin: 6px 0;
+}
+
+.section h2 {
+	margin-bottom: 8px;
+}
+.muted {
+	color: var(--muted);
+	margin: 0 0 16px;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+}
+@media (max-width: 800px) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.card {
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	padding: 16px;
+}
+
+.card h3 {
+	margin: 0 0 8px;
+}
+.card p {
+	color: var(--muted);
+	margin: 0 0 12px;
+}
+
+.cta {
+	background: #0e1523;
+}
+
+.arch {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 16px;
+}
+@media (max-width: 900px) {
+	.arch {
+		grid-template-columns: 1fr;
+	}
+}
+
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-top: 1px solid var(--border);
+	padding-top: 16px;
+	color: var(--muted);
+}
+.footerNav {
+	display: flex;
+	gap: 14px;
+}

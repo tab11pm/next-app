@@ -1,19 +1,18 @@
 import Title from '@/components/ui/Title'
-import { getUsers } from '@/lib/api/jsonplaceholder'
+// import { getUsers } from '@/lib/api/jsonplaceholder'
 export const dynamic = 'force-dynamic' // или fetch(..., { cache: 'no-store' })
 
 export const metadata = { title: 'SSR: Пользователи' }
 
 export default async function UsersPage() {
-	const users = await getUsers({ cache: 'no-store' })
-	// const { isLoader } = useLoaderStore()
+	// const users = await getUsers({ cache: 'no-store' })
 	return (
 		<section className="container-prose">
 			<h1 className="text-2xl font-bold mb-4">
 				<Title>SSR</Title>: пользователи
 			</h1>
 			<div className="grid gap-3">
-				{users.map((u) => (
+				{/* {users.map((u) => (
 					<div key={u.id} className="rounded-md border p-4">
 						<div className="font-semibold">{u.name}</div>
 						<div className="text-sm text-slate-600">@{u.username}</div>
@@ -24,7 +23,7 @@ export default async function UsersPage() {
 							{u.email}
 						</a>
 					</div>
-				))}
+				))} */}
 			</div>
 		</section>
 	)

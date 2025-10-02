@@ -6,7 +6,7 @@ import { useModalStore } from '@/store/modal.store'
 import { Button } from './Button'
 
 export function ModalRoot() {
-	const { isOpen, content, close } = useModalStore()
+	const { isOpen, content, close, title } = useModalStore()
 
 	useEffect(() => {
 		const onKey = (e: KeyboardEvent) => e.key === 'Escape' && close()
@@ -32,7 +32,7 @@ export function ModalRoot() {
 				className="w-full max-w-lg rounded-lg bg-white dark:bg-[rgb(var(--panel))] p-6 shadow-xl ring-1 ring-[rgb(var(--border))] animate-scale-in"
 			>
 				<div className="flex items-center justify-between mb-4">
-					<h2 className="text-lg font-semibold">Модальное окно</h2>
+					<h2 className="text-lg font-semibold">{title}</h2>
 					<Button variant="ghost" aria-label="Закрыть" onClick={close}>
 						✕
 					</Button>

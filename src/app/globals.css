@@ -8,6 +8,10 @@
 	--border: 226 232 240; /* slate-200 */
 	--panel: 255 255 255;
 	--overlay: 0 0 0;
+	--accent: #4f46e5;
+	--accent-2: #22c55e;
+	--card: #151c28;
+	--text: #e3e8ef;
 }
 
 /* тёмная тема (класс на <html>) */
