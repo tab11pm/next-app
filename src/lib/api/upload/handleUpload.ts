@@ -12,7 +12,6 @@ export async function handleUpload(file: File) {
 	if (!presignRes.ok || !presignJson?.url || !presignJson?.key) {
 		throw new Error('presign failed: ' + JSON.stringify(presignJson))
 	}
-	console.log(presignJson)
 
 	const { url, key, contentType } = presignJson
 

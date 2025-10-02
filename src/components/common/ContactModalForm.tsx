@@ -69,7 +69,6 @@ export default function ContactFormModal({
 		// If a file is selected, upload to S3
 		const file = values.file
 		if (file) {
-			debugger
 			const data = await handleUpload(file)
 			key = data.key
 		}

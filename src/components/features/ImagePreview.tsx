@@ -1,5 +1,4 @@
 import { ImagePlus, Trash2 } from 'lucide-react'
-import Image from 'next/image'
 import type { MouseEventHandler } from 'react'
 
 type Props = {
@@ -15,10 +14,9 @@ export default function ImagePreview({
 }: Props) {
 	return (
 		<div className="relative w-full h-[280px]">
-			<Image
+			<img
 				src={previewUrl}
 				alt="Предпросмотр фотографии"
-				fill
 				className="object-cover rounded-2xl"
 				draggable={false}
 			/>
