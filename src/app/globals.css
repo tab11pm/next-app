@@ -10,8 +10,9 @@
 	--overlay: 0 0 0;
 	--accent: #4f46e5;
 	--accent-2: #22c55e;
-	--card: #151c28;
-	--text: #e3e8ef;
+	--card: #cecece;
+	--card-text: #000;
+	--text: #000;
 }
 
 /* тёмная тема (класс на <html>) */
@@ -22,6 +23,9 @@
 	--border: 51 65 85; /* slate-600 */
 	--panel: 15 23 42; /* slate-900 */
 	--overlay: 0 0 0;
+	--text: #fff;
+	--card: #151c28;
+	--card-text: #fff;
 }
 
 html,

@@ -20,7 +20,7 @@ export const FEATURECARDS: PagesType[] = [
 	},
 	{
 		title: 'Модальное окно & POST',
-		link: '/playground/modal',
+		link: '/contacts',
 		text: (
 			<>
 				Модал содержит два поля: текст и файл. Отправка выполняется{' '}
@@ -42,7 +42,7 @@ export const FEATURECARDS: PagesType[] = [
 	},
 	{
 		title: 'Работа с API',
-		link: '/playground/api',
+		link: '/blog',
 		text: (
 			<>
 				Примеры запросов к <code>jsonplaceholder</code>: получение списков,

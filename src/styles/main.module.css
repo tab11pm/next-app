@@ -10,7 +10,6 @@
 
 .hero {
 	display: grid;
-	grid-template-columns: 1.2fr 0.8fr;
 	gap: 24px;
 }
 
@@ -46,6 +45,7 @@
 	border-radius: 999px;
 	font-size: 12px;
 	background: linear-gradient(180deg, #0f1520 0%, #0b1018 100%);
+	color: white;
 }
 
 .heroCtas {
@@ -124,12 +124,13 @@
 	margin: 0 0 8px;
 }
 .card p {
-	color: var(--muted);
+	color: var(--text);
 	margin: 0 0 12px;
 }
 
 .cta {
 	background: #0e1523;
+	color: white;
 }
 
 .arch {

@@ -13,11 +13,11 @@ export default function ImagePreview({
 	onChange,
 }: Props) {
 	return (
-		<div className="relative w-full h-[280px]">
+		<div className="relative w-full h-[280px] overflow-hidden">
 			<img
 				src={previewUrl}
 				alt="Предпросмотр фотографии"
-				className="object-cover rounded-2xl"
+				className="object-cover rounded-2xl size-full"
 				draggable={false}
 			/>
 			<div className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-2">
