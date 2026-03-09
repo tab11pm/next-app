@@ -1,36 +1,397 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Rendering [Demo](https://next-app-lake-nine-46.vercel.app/)
 
-## Getting Started
+Pet-проект для демонстрации основных типов рендеринга в **Next.js App Router**: **SSG**, **SSR**, **ISR** и **CSR**.
 
-First, run the development server:
+## О проекте
+
+Это учебно-демонстрационное приложение, созданное для практики и показа навыков работы с разными подходами к рендерингу в Next.js.
+
+Проект объединяет несколько независимых страниц, каждая из которых показывает конкретный сценарий использования:
+
+- **SSG** — статическая генерация страниц
+
+- **SSR** — серверный рендеринг на каждый запрос
+
+- **ISR** — инкрементальная регенерация статических страниц
+
+- **CSR** — клиентский рендеринг с интерактивным состоянием
+
+Дополнительно в проекте реализованы:
+
+- документация на **MDX/Nextra**
+
+- работа с внешним API
+
+- форма с валидацией
+
+- модальные окна
+
+- загрузка изображений в **S3** через presigned URL
+
+- локальное хранение контактов в `localStorage`
+
+---
+
+## Цель проекта
+
+Основная цель проекта — на практике показать понимание:
+
+- различий между типами рендеринга в Next.js
+
+- того, когда и зачем использовать SSG / SSR / ISR / CSR
+
+- организации структуры проекта на **App Router**
+
+- работы с клиентскими и серверными компонентами
+
+- интеграции с внешними сервисами и API
+
+---
+
+## Стек технологий
+
+- **Next.js 15**
+
+- **React 19**
+
+- **TypeScript**
+
+- **Tailwind CSS**
+
+- **Zustand**
+
+- **React Hook Form**
+
+- **Zod**
+
+- **TanStack React Query**
+
+- **Nextra / MDX**
+
+- **AWS S3 SDK**
+
+- **Framer Motion**
+
+---
+
+## Демонстрируемые типы рендеринга
+
+### 1. SSG — Static Site Generation
+
+Используется в разделе документации.
+
+Страницы генерируются заранее на этапе сборки и отдаются как статический HTML.
+
+**Подходит для:**
+
+- документации
+
+- блогов
+
+- редко изменяемого контента
+
+---
+
+### 2. SSR — Server-Side Rendering
+
+Используется на странице `/users`.
+
+Данные загружаются на сервере при каждом запросе, поэтому пользователь всегда получает актуальную версию страницы.
+
+**Подходит для:**
+
+- динамических данных
+
+- персонализированного контента
+
+- страниц, где важна актуальность
+
+---
+
+### 3. ISR — Incremental Static Regeneration
+
+Используется на страницах `/blog` и `/blog/[id]`.
+
+Страница генерируется как статическая, но может обновляться через заданный промежуток времени.
+
+**Подходит для:**
+
+- контента, который обновляется не слишком часто
+
+- блогов
+
+- новостных страниц
+
+---
+
+### 4. CSR — Client-Side Rendering
+
+Используется на странице `/contacts`.
+
+Страница рендерится на клиенте и активно работает с состоянием, формами, `localStorage` и загрузкой изображений.
+
+**Подходит для:**
+
+- интерактивных интерфейсов
+
+- dashboard-страниц
+
+- локального UI-состояния
+
+- форм и модалок
+
+---
+
+## Страницы проекта
+
+### `/`
+
+Главная страница с кратким описанием проекта и ссылками на разделы.
+
+### `/docs`
+
+Раздел документации на MDX/Nextra. Демонстрирует **SSG**.
+
+### `/users`
+
+Страница пользователей с данными из внешнего API. Демонстрирует **SSR**.
+
+### `/blog`
+
+Список постов из внешнего API. Демонстрирует **ISR**.
+
+### `/blog/[id]`
+
+Детальная страница поста. Также использует **ISR**.
+
+### `/contacts`
+
+Клиентская страница контактов. Демонстрирует **CSR**, работу с:
+
+- `localStorage`
+
+- Zustand
+
+- формами
+
+- модальными окнами
+
+- загрузкой изображений в S3
+
+---
+
+## Функциональность
+
+### Контакты
+
+- создание контакта
+
+- редактирование контакта
+
+- удаление контакта
+
+- поиск по имени и телефону
+
+- загрузка фото
+
+- хранение данных в `localStorage`
+
+### Изображения
+
+- загрузка изображения в S3
+
+- получение временной ссылки через API route
+
+- отображение изображения по `key`
+
+### UI
+
+- модальные окна
+
+- toast-уведомления
+
+- loader
+
+- базовые переиспользуемые UI-компоненты
+
+---
+
+### Кратко по папкам
+
+- `app/` — маршруты, страницы, layout, API routes
+
+- `components/` — UI и feature-компоненты
+
+- `lib/` — утилиты и вспомогательная логика
+
+- `store/` — Zustand store
+
+- `types/` — TypeScript-типы
+
+- `constants/` — константы
+
+- `styles/` — стили проекта
+
+---
+
+## Локальный запуск
+
+### 1. Клонировать репозиторий
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+git clone <repo-url>
+
+cd <project-folder>
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Установить зависимости
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+npm install
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Запустить dev-сервер
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+npm run dev
 
-## Deploy on Vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Приложение будет доступно по адресу:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+
+http://localhost:3000
+
+```
+
+---
+
+## Переменные окружения
+
+Для работы загрузки файлов в S3 необходимо создать `.env.local` и указать:
+
+```env
+
+S3_ENDPOINT=
+
+S3_REGION=
+
+S3_FORCE_PATH_STYLE=
+
+S3_ACCESS_KEY_ID=
+
+S3_SECRET_ACCESS_KEY=
+
+S3_BUCKET=
+
+MAX_UPLOAD_BYTES=
+
+```
+
+### Описание переменных
+
+- `S3_ENDPOINT` — endpoint S3-compatible storage
+
+- `S3_REGION` — регион хранилища
+
+- `S3_FORCE_PATH_STYLE` — режим адресации
+
+- `S3_ACCESS_KEY_ID` — access key
+
+- `S3_SECRET_ACCESS_KEY` — secret key
+
+- `S3_BUCKET` — имя bucket
+
+- `MAX_UPLOAD_BYTES` — максимальный размер загружаемого файла
+
+---
+
+## Скрипты
+
+```bash
+
+npm run dev
+
+```
+
+Запуск проекта в режиме разработки.
+
+```bash
+
+npm run build
+
+```
+
+Сборка production-версии.
+
+```bash
+
+npm run start
+
+```
+
+Запуск production-сборки.
+
+```bash
+
+npm run lint
+
+```
+
+Проверка проекта линтером.
+
+---
+
+## Что демонстрирует этот проект
+
+Этот проект показывает навыки работы с:
+
+- **Next.js App Router**
+
+- **разными типами рендеринга**
+
+- **TypeScript**
+
+- **организацией структуры проекта**
+
+- **работой с клиентским и серверным кодом**
+
+- **интеграцией с внешним API**
+
+- **валидацией форм**
+
+- **управлением состоянием**
+
+- **S3 upload flow через presigned URL**
+
+---
+
+## Ограничения проекта
+
+Так как это pet-проект, часть функциональности сделана в демонстрационных целях:
+
+- контакты хранятся в `localStorage`, а не в базе данных
+
+- нет полноценного backend для контактов
+
+- проект не ориентирован на production-использование
+
+- часть разделов служит именно для демонстрации подходов рендеринга, а не бизнес-логики
+
+---
+
+## Для чего подойдёт этот проект
+
+- как pet-проект в портфолио
+
+- как демонстрация понимания Next.js rendering strategies
+
+- как учебный шаблон для практики App Router
+
+- как база для дальнейшего расширения в более реальное приложение
